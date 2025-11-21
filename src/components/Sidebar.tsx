@@ -23,7 +23,8 @@ export function Sidebar() {
       </div>
       <nav className="sidebar-menu">
         {links.map((link) => {
-          const active = pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href));
+          const currentPath = pathname || '';
+          const active = currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href));
           return (
             <Link
               key={link.href}

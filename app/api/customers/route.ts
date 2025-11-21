@@ -94,8 +94,9 @@ export async function POST(request: Request) {
 
     const name =
       typeof body.name === "string" ? body.name.trim() : "";
-    const type =
-      typeof body.type === "string" ? (body.type.trim() as CustomerType) : "";
+    const rawType =
+      typeof body.type === "string" ? body.type.trim() : "";
+    const type = CUSTOMER_TYPES.find((t) => t === rawType);
 
     if (!name) {
       return NextResponse.json(
@@ -104,7 +105,7 @@ export async function POST(request: Request) {
       );
     }
 
-    if (!CUSTOMER_TYPES.includes(type)) {
+    if (!type) {
       return NextResponse.json(
         { success: false, error: "invalid customer type" },
         { status: 400 }

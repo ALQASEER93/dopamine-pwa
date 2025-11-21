@@ -106,8 +106,9 @@ export async function POST(request: Request) {
       typeof body.repId === "string" ? body.repId.trim() : "";
     const customerName =
       typeof body.customerName === "string" ? body.customerName.trim() : "";
-    const type =
-      typeof body.type === "string" ? (body.type.trim() as TaskType) : "";
+    const rawType =
+      typeof body.type === "string" ? body.type.trim() : "";
+    const type = TASK_TYPES.find((t) => t === rawType);
     const title =
       typeof body.title === "string" ? body.title.trim() : "";
     const dueDateStr =
@@ -120,7 +121,7 @@ export async function POST(request: Request) {
       );
     }
 
-    if (!TASK_TYPES.includes(type)) {
+    if (!type) {
       return NextResponse.json(
         { success: false, error: "invalid task type" },
         { status: 400 }
@@ -187,4 +188,3 @@ export async function POST(request: Request) {
     );
   }
 }
-

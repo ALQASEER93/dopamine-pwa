@@ -89,7 +89,7 @@ export async function PATCH(
       { returnDocument: "after" }
     );
 
-    if (!result.value) {
+    if (!result || !result.value) {
       return NextResponse.json(
         { success: false, error: "Task not found" },
         { status: 404 }
@@ -143,4 +143,3 @@ export async function DELETE(
     );
   }
 }
-
