@@ -2,6 +2,7 @@ import 'leaflet/dist/leaflet.css';
 import './globals.css';
 import Sidebar from '../components/Sidebar';
 import PwaClient from '../components/PwaClient';
+import OfflineSyncClient from '../components/OfflineSyncClient';
 
 export const metadata = {
   title: 'Dopamine CRM PWA',
@@ -17,6 +18,7 @@ export default function RootLayout({ children }) {
       </head>
       <body>
         <PwaClient />
+        <OfflineSyncClient />
         <div className="app-shell">
           <Sidebar />
           <main className="app-main">

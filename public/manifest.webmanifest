@@ -1,6 +1,6 @@
 {
-  "name": "Dopamine CRM PWA",
-  "short_name": "DPM CRM",
+  "name": "Dopamine Field Force",
+  "short_name": "DPM Field",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#020617",

@@ -57,7 +57,7 @@ export default function RepsMapPage() {
     script.defer = true;
     script.onerror = () => setError('تعذر تحميل خرائط Google. تأكد من صحة الـ API key.');
     document.head.appendChild(script);
-  }, []);
+  }, [mapLoaded]);
 
   const createMap = () => {
     if (!mapRef.current || !window.google) return;
